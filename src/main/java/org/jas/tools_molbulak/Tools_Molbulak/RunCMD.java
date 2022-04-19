@@ -11,10 +11,12 @@ public class RunCMD {
 		builder.redirectErrorStream(true);
 		Process process;
 		try {
+			
 			process = builder.start();
 			BufferedReader r = new BufferedReader(new InputStreamReader(process.getInputStream()));
 			String line;
 			String log = null;
+			
 			while (true) {
 				line = r.readLine();
 				if (line == null) {
@@ -23,15 +25,15 @@ public class RunCMD {
 				System.out.println(line);
 				log = line;
 			}
+			
 			if (log.equals(msgRES)) {
 				System.out.println(msgOK);
-			} else {
-				System.out.println(msgNO);
 			}
 		} catch (IOException e) {
 			System.out.println(msgNO);
 			e.printStackTrace();
 		}
+		
 	}
 
 }
